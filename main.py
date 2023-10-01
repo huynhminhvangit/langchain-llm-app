@@ -44,13 +44,13 @@ with st.sidebar:
 
         submit_button = st.form_submit_button(label="Submit")
 
-    if query and youtube_url:
-        if not openai_api_key:
-            st.info("Please add you OpenAI API key to continue.")
-            st.stop()
-        else:
-            db = lch.create_db_from_youtube_video_url(youtube_url)
-            response, docs = lch.get_response_from_query(db, query=query)
+if query and youtube_url:
+    if not openai_api_key:
+        st.info("Please add you OpenAI API key to continue.")
+        st.stop()
+    else:
+        db = lch.create_db_from_youtube_video_url(youtube_url)
+        response, docs = lch.get_response_from_query(db, query=query)
 
-            st.subheader("Answer:")
-            st.text(textwrap.fill(response, width=85))
+        st.subheader("Answer:")
+        st.text(textwrap.fill(response, width=85))
